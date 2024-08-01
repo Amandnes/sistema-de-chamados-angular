@@ -1,34 +1,35 @@
-<div id="container-novo-chamado">
+<div class="conteiner-conteudo-geral">
     <h3>Novo chamado</h3>
-    <form>
-        <div class="parte-form">
-            <legend>Usuário:</legend>
-            <input type="email" id="form-usuario" placeholder="usuario@example.com">
+    <form class="row g-3" [formGroup]="formChamado" (ngSubmit)="onSubmit()">
+        <div class="col-6">
+            <label class="form-label">Usuário:</label>
+            <input class="form-control" type="email" placeholder="usuario@example.com" formControlName="criado_por">
         </div>
-        <div class="parte-form parte2-form">
-            <div>
-                <legend>Local: </legend>
-                <input type="text" id="form-local">
+        <div class="parte2-form">
+            <div class="col-4">
+                <label class="form-label">Local: </label>
+                <input class="form-control" type="text" id="form-local" formControlName="local">
             </div>
-            <div>
-                <legend>Prioridade:</legend>
-                <select name="select" id="prioridade">
+            <div class="col-1">
+                <label class="form-label">Prioridade:</label>
+                <select class="form-select" name="select" id="prioridade" formControlName="prioridade">
                     <option value="alta">Alta</option>
                     <option value="normal">Normal</option>
                     <option value="baixa">Baixa</option>
                 </select>
             </div>
         </div>
-        <div class="parte-form">
-            <legend>Assunto:</legend>
-            <input type="text" id="form-assunto">
+        <div class="col-12">
+            <label class="form-label">Assunto:</label>
+            <input class="form-control" type="text" id="form-assunto" formControlName="assunto">
         </div>
-        <div class="parte-form">
-            <legend>Descrição:</legend>
-            <textarea name="descricao" id="form-descricao"></textarea>
+        <div class="col-12">
+            <label class="form-label">Descrição:</label>
+            <textarea class="form-control" name="descricao" formControlName="descricao"></textarea>
         </div>
         <div>
-            <input type="file" name="anexo" id="form-anexo">
+            <input class="form-control" type="file" name="anexo" id="form-anexo" formControlName="anexo">
         </div>
+        <button class="btn btn-enviar" type="button" (click)="click()">Enviar</button>
     </form>
 </div>

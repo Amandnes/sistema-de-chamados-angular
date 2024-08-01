@@ -1,6 +1,6 @@
 #body-sidebar{
     background-color: #3a4675;
-    width: 225px;
+    width: 265px;
     height: 100%;
     position: fixed;
     padding: 0px 20px;
@@ -10,6 +10,7 @@
 }
 .titulo-sidebar {
     border-bottom: 1px solid #a9a9a982;
+    padding: 20px 0px;
 }
 .titulo-sidebar img {
     height: 35px;  
@@ -17,6 +18,7 @@
 }
 .titulo-sidebar h2{
     margin-left: 5px;
+    margin-bottom: 0px;
 }
 .conteudo-sidebar li {
     list-style-type: none;

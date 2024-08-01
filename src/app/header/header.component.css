@@ -1,6 +1,10 @@
 #body-header {
     justify-content: space-between;
     border-bottom: 1px solid #a9a9a982;
+    padding: 18px 0px;
+}
+#body-header h2 {
+    margin-bottom: 0px;
 }
 .campo-busca {
     height: 42px;

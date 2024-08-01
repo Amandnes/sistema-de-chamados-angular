@@ -1,17 +1,11 @@
-#container-novo-chamado {
-    background: white;
-    border-radius: 5px;
-    padding: 20px;
-    margin-top: 20px
-}
-#container-novo-chamado h3 {
+.conteiner-conteudo-geral h3 {
     margin: 0px 0px 20px 0px;
 }
 .parte2-form {
-    display: flex;
-    gap: 20px;
+    display: flex;  
+    gap: 7.8%;
 }
-.parte-form {
+/* .parte-form {
     margin-bottom: 10px;
 }
 input, select, textarea {
@@ -21,7 +15,7 @@ input, select, textarea {
     border: 1px solid #27272769;
     border-radius: 3px;
 }
-#form-local, #form-usuario {
+ #form-local, #form-usuario {
     width: 300px;
 }
 #form-assunto, #form-descricao {
@@ -29,5 +23,14 @@ input, select, textarea {
 }
 #form-descricao {
     height: 150px;
-    resize: none;
+    resize: vertical;
+}  */
+.btn-enviar {
+    background: #3a4675;
+    color: white;
+    width: 100px;
+    margin-left: 8px;
+}
+.btn-enviar:hover {
+    background-color: #54668e;
 }

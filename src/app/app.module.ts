@@ -7,8 +7,10 @@ import { HeaderComponent } from './header/header.component';
 import { ChamadosComponent } from './chamados/chamados.component';
 import { ListaChamadosComponent } from './chamados/lista-chamados/lista-chamados.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { CriarChamadosComponent } from './chamados/criar-chamados/criar-chamados.component';
 import { DashboardsChamadosComponent } from './chamados/dashboards-chamados/dashboards-chamados.component';
+import { CriarChamadosModule } from './chamados/criar-chamados/criar-chamados.module';
+import { DataService } from './data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,15 @@ import { DashboardsChamadosComponent } from './chamados/dashboards-chamados/dash
     ChamadosComponent,
     ListaChamadosComponent,
     SidebarComponent,
-    CriarChamadosComponent,
     DashboardsChamadosComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CriarChamadosModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

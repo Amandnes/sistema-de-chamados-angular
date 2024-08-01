@@ -18,4 +18,10 @@ body, html {
 }
 #body-header {
     margin: 0px 20px;
+} 
+.conteiner-conteudo-geral {
+    background: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
 }
