@@ -36,14 +36,11 @@ export class DataService {
             'accept': 'application/json',
             'authorization': this.token
             })
-            debugger
         return this.http.post<any>(this.jsonUrl, dados, {headers}).pipe(
             tap(response => {
-                debugger
                 console.log("Dados enviados", response)
             }),
             catchError(error => {
-                debugger
                 console.error('Erro ao enviar', error)
                 return throwError(() => new Error("Erro ao enviar os dados"))
             })

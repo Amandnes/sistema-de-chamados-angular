@@ -9,8 +9,8 @@ import { DetalheChamadoComponent } from './chamados/lista-chamados/detalhe-chama
 const routes: Routes = [
   { path: 'novo-chamado', component: CriarChamadosComponent },
   { path: 'lista-chamados', component: ListaChamadosComponent},
-  { path: ':id', component: DetalheChamadoComponent},
-  { path: 'dashboards', component: DashboardsChamadosComponent }
+  { path: 'dashboards', component: DashboardsChamadosComponent },
+  { path: ':id', component: DetalheChamadoComponent}
 ];
 
 @NgModule({

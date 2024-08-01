@@ -23,14 +23,12 @@ export class CriarChamadosComponent implements OnInit{
     })
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSubmit() {
     this.dataService.updateData(this.formChamado.value).subscribe({
       next: (res) => {this.isEnviado = true},
       error: (err) => {this.isEnviado = true}
     })
-
   }
 }
