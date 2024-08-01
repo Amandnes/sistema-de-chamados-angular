@@ -1,0 +1,25 @@
+#body-header {
+    justify-content: space-between;
+    border-bottom: 1px solid #a9a9a982;
+}
+.campo-busca {
+    height: 42px;
+    background: white;
+    padding: 0px 10px;
+    border-radius: 10px;
+}
+.campo-busca img {
+    height: 24px;
+    padding-right: 8px;
+    border-right: 1px solid #a9a9a982;
+    margin-right: 15px;
+
+}
+.campo-busca input {
+    height: 25px;
+    border: 0px;
+    font-size: 16px;
+}
+.campo-busca input:focus-visible {
+    outline: none;
+}

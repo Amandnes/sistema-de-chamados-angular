@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0px;
+    font-family: system-ui;
+    background-color: #e6e7e7;
+}
+body, html {
+    height: 100%;
+}
+#container-header, #conteudos-gerais {
+    margin-left: 265px;
+}
+#body-header, .titulo-sidebar, .conteudo-sidebar li, .campo-busca {
+    display: flex;
+}
+#body-header, .titulo-sidebar, .campo-busca {
+    align-items: center;
+}
+#body-header {
+    margin: 0px 20px;
+}
