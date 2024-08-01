@@ -17,15 +17,19 @@ export class DataService {
         return this.http.get<any>(this.jsonUrl, {headers})
     }
 
-    updateData(dados: any) {
-        console.log(JSON.stringify(dados))
+    updateData(dados: any): Observable<any> {
         let headers = new HttpHeaders({
-            'content-type': 'application/json',
-            'authorization': `Bearer ${this.token}`
+            'accept': 'application/json',
+            'authorization': this.token
             })
-        return this.http.post<any>(this.jsonUrl, JSON.stringify(dados), {headers}).pipe(
-            tap(response => console.log("Dados enviados", response)),
+            debugger
+        return this.http.post<any>(this.jsonUrl, dados, {headers}).pipe(
+            tap(response => {
+                debugger
+                console.log("Dados enviados", response)
+            }),
             catchError(error => {
+                debugger
                 console.error('Erro ao enviar', error)
                 return throwError(() => new Error("Erro ao enviar os dados"))
             })

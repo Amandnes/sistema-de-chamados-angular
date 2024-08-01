@@ -8,7 +8,8 @@ import { DataService } from '../../data.service';
   styleUrl: './criar-chamados.component.css'
 })
 export class CriarChamadosComponent implements OnInit{
-  dados: any
+  isEnviado = false
+  isErro = false
   formChamado: FormGroup
 
   constructor(private dataService: DataService) {
@@ -24,9 +25,6 @@ export class CriarChamadosComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.dataService.getData().subscribe(dado => {
-      this.dados = dado
-    })
   }
 
   onSubmit() {
@@ -34,7 +32,9 @@ export class CriarChamadosComponent implements OnInit{
 
   }
   click() {
-    this.dados.splice(0, 1, this.formChamado.value, this.dados[0])
-    this.dataService.updateData(this.dados)
+    this.dataService.updateData(this.formChamado.value).subscribe({
+      next: (res) => {this.isEnviado = true},
+      error: (err) => {this.isEnviado = true}
+    })
   }
 }

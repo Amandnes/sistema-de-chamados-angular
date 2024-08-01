@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let dado of dados;">
-                <td>a {{dado.criado_por}}</td>
+                <td>{{dado.criado_por}}</td>
                 <td>{{dado.assunto}}</td>
                 <td><div class="prioridade" [ngClass]="stylePrioridade(dado.prioridade)">{{dado.prioridade}}</div></td>
                 <td>{{dado.local}}</td>

@@ -1,5 +1,11 @@
 <div class="conteiner-conteudo-geral">
     <h3>Novo chamado</h3>
+    <div class="alert alert-success" role="alert" *ngIf="isEnviado">
+        Chamado enviado com sucesso!
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="isErro">
+            Falha ao enviar o chamado.
+    </div>
     <form class="row g-3" [formGroup]="formChamado" (ngSubmit)="onSubmit()">
         <div class="col-6">
             <label class="form-label">Usuário:</label>
@@ -13,9 +19,9 @@
             <div class="col-1">
                 <label class="form-label">Prioridade:</label>
                 <select class="form-select" name="select" id="prioridade" formControlName="prioridade">
-                    <option value="alta">Alta</option>
-                    <option value="normal">Normal</option>
-                    <option value="baixa">Baixa</option>
+                    <option value="Alta">Alta</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Baixa">Baixa</option>
                 </select>
             </div>
         </div>

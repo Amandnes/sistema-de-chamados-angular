@@ -13,8 +13,9 @@ export class ListaChamadosComponent implements OnInit{
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.getData().subscribe(data => {
-      this.dados = data
+    this.dataService.getData().subscribe({
+      next: (res) => this.dados = res,
+      error: (err) => console.error(err)
     })
   }
 
