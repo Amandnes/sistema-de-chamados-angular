@@ -11,6 +11,7 @@ import { DashboardsChamadosComponent } from './chamados/dashboards-chamados/dash
 import { CriarChamadosModule } from './chamados/criar-chamados/criar-chamados.module';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DetalheChamadoComponent } from './chamados/lista-chamados/detalhe-chamado/detalhe-chamado.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     ChamadosComponent,
     ListaChamadosComponent,
     SidebarComponent,
-    DashboardsChamadosComponent
+    DashboardsChamadosComponent,
+    DetalheChamadoComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { DataService } from '../../data.service';
 })
 export class ListaChamadosComponent implements OnInit{
 
-  dados: any[] = []
+  dados: any
 
   constructor(private dataService: DataService) {}
 
@@ -27,5 +27,12 @@ export class ListaChamadosComponent implements OnInit{
     } else {
       return 'stylePrioridadeBaixa'
     }
+  }
+
+  clickChamado(dado: number) {
+    this.dataService.pegarId(dado)
+    this.dataService.chamadoSelecionado().subscribe(dado =>{
+      console.log(dado)
+    })
   }
 }

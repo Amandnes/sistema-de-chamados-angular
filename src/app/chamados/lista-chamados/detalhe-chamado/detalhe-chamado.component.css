@@ -1,0 +1,7 @@
+.rChamado {
+    font-weight: bold;
+}
+.bloco-1 {
+    display: flex;
+    gap: 15%;
+}

@@ -1,0 +1,20 @@
+<div class="conteiner-conteudo-geral">
+    <div class="bloco-1">
+        <div >
+            <span>Assunto do Chamado: </span>
+            <span class="rChamado">{{dado.assunto}}</span>
+        </div>
+        <div>
+            <span>Prioridade: </span>
+            <span class="prioridade" [ngClass]="stylePrioridade(dado.prioridade)" style="padding: 2px 13px;">{{dado.prioridade}}</span>
+        </div>
+    </div>
+    <div>
+        <span>Criado em: </span>
+        <span class="rChamado">{{dado.criado_em | date: 'dd/MM/yyyy - HH:mm'}}</span>
+    </div>
+    <div>
+        <span>De: </span>
+        <span>{{dado.criado_por}}</span>
+    </div>
+</div>

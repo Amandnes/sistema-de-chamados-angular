@@ -25,3 +25,18 @@ body, html {
     padding: 20px;
     margin-top: 20px;
 }
+.stylePrioridadeAlta {
+    background-color: #f90202;
+}
+.stylePrioridadeNormal {
+    background-color: #6fab6f;
+}
+.stylePrioridadeBaixa {
+    background-color: #59a6f7;
+}
+.prioridade {
+    width: 70px;
+    text-align: center;
+    border-radius: 4px;
+    color: white;
+}

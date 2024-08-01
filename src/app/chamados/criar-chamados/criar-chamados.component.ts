@@ -15,7 +15,6 @@ export class CriarChamadosComponent implements OnInit{
   constructor(private dataService: DataService) {
     this.formChamado = new FormGroup({
       assunto: new FormControl(''),
-      // criado_em: new FormControl(new Date),
       criado_por: new FormControl(''),
       descricao: new FormControl(''),
       local: new FormControl(''),
@@ -28,13 +27,10 @@ export class CriarChamadosComponent implements OnInit{
   }
 
   onSubmit() {
-    console.log(this.formChamado, 'teste')
-
-  }
-  click() {
     this.dataService.updateData(this.formChamado.value).subscribe({
       next: (res) => {this.isEnviado = true},
       error: (err) => {this.isEnviado = true}
     })
+
   }
 }

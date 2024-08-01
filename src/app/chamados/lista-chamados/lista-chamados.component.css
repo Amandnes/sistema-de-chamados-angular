@@ -1,18 +1,4 @@
-.prioridade {
-    width: 70px;
-    text-align: center;
-    border-radius: 4px;
-    color: white;
-}
-.stylePrioridadeAlta {
-    background-color: #f90202;
-}
-.stylePrioridadeNormal {
-    background-color: #6fab6f;
-}
-.stylePrioridadeBaixa {
-    background-color: #59a6f7;
-}
+
 tbody tr td{
     cursor: pointer;
 }
