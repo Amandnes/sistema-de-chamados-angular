@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let dado of dados;" (click)="clickChamado(dado.id)" routerLink="/chamado">
+            <tr *ngFor="let dado of dados;" (click)="clickChamado(dado.id)" [routerLink]="[dado.id]">
                 <td>{{dado.criado_por}}</td>
                 <td>{{dado.assunto}}</td>
                 <td><div class="prioridade" [ngClass]="stylePrioridade(dado.prioridade)">{{dado.prioridade}}</div></td>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../data.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-chamados',
@@ -7,16 +8,16 @@ import { DataService } from '../../data.service';
   styleUrl: './lista-chamados.component.css'
 })
 export class ListaChamadosComponent implements OnInit{
-
   dados: any
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit() {
     this.dataService.getData().subscribe({
       next: (res) => this.dados = res,
       error: (err) => console.error(err)
     })
+
   }
 
   stylePrioridade(p: string) {
@@ -31,8 +32,6 @@ export class ListaChamadosComponent implements OnInit{
 
   clickChamado(dado: number) {
     this.dataService.pegarId(dado)
-    this.dataService.chamadoSelecionado().subscribe(dado =>{
-      console.log(dado)
-    })
+    this.router.navigate([`/${dado}`])
   }
 }

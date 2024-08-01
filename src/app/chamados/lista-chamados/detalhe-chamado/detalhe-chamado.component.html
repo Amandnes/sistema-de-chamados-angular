@@ -1,20 +1,30 @@
-<div class="conteiner-conteudo-geral">
+<div class="conteiner-conteudo-geral" *ngIf="isLoad">
     <div class="bloco-1">
-        <div >
+        <div class="bloco-interno-1">
             <span>Assunto do Chamado: </span>
             <span class="rChamado">{{dado.assunto}}</span>
         </div>
-        <div>
+        <div class="bloco-interno-1">
             <span>Prioridade: </span>
             <span class="prioridade" [ngClass]="stylePrioridade(dado.prioridade)" style="padding: 2px 13px;">{{dado.prioridade}}</span>
         </div>
     </div>
-    <div>
-        <span>Criado em: </span>
-        <span class="rChamado">{{dado.criado_em | date: 'dd/MM/yyyy - HH:mm'}}</span>
+    <div class="bloco-1">
+        <div class="bloco-interno-1">
+            <span>Criado em: </span>
+            <span class="rChamado">{{dado.criado_em | date: 'dd/MM/yyyy - HH:mm'}}</span>
+        </div>
+        <div class="bloco-interno-1">
+            <span>Local: </span>
+            <span class="rChamado">{{dado.local}}</span>
+        </div>
     </div>
     <div>
         <span>De: </span>
-        <span>{{dado.criado_por}}</span>
+        <span class="rChamado">{{dado.criado_por}}</span>
+    </div>
+    <div class="bloco-descricao">
+        <h6>Descrição: </h6>
+        <p>{{dado.descricao}}</p>
     </div>
 </div>

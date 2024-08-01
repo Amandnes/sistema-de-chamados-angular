@@ -9,7 +9,7 @@ import { DetalheChamadoComponent } from './chamados/lista-chamados/detalhe-chama
 const routes: Routes = [
   { path: 'novo-chamado', component: CriarChamadosComponent },
   { path: 'lista-chamados', component: ListaChamadosComponent},
-  { path: 'chamado', component: DetalheChamadoComponent},
+  { path: ':id', component: DetalheChamadoComponent},
   { path: 'dashboards', component: DashboardsChamadosComponent }
 ];
 
