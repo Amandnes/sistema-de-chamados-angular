@@ -1,5 +1,6 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
-<div id="conteudos-gerais" >
-  <router-outlet></router-outlet>
+<app-header (logOut)="logOut($event)" *ngIf="logado"></app-header>
+<app-sidebar *ngIf="logado"></app-sidebar>
+<app-login (login)="login($event)" *ngIf="!logado"></app-login>
+<div id="conteudos-gerais" *ngIf="logado">
+  <router-outlet ></router-outlet>
 </div>

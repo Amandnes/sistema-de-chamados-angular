@@ -8,9 +8,11 @@ import { ListaChamadosComponent } from './chamados/lista-chamados/lista-chamados
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardsChamadosComponent } from './chamados/dashboards-chamados/dashboards-chamados.component';
 import { CriarChamadosModule } from './chamados/criar-chamados/criar-chamados.module';
-import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DetalheChamadoComponent } from './chamados/lista-chamados/detalhe-chamado/detalhe-chamado.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './login/auth.service';
 
 @NgModule({
   declarations: [
@@ -19,15 +21,17 @@ import { DetalheChamadoComponent } from './chamados/lista-chamados/detalhe-chama
     ListaChamadosComponent,
     SidebarComponent,
     DashboardsChamadosComponent,
-    DetalheChamadoComponent
+    DetalheChamadoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CriarChamadosModule,
-    HttpClientModule
+    HttpClientModule, 
+    ReactiveFormsModule
   ],
-  providers: [DataService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

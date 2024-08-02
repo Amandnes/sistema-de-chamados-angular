@@ -27,3 +27,25 @@
 .campo-busca input:focus-visible {
     outline: none;
 }
+.conteiner-perfil img {
+    height: 40px;
+}
+.conteiner-perfil {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.que-usuario {
+    font-size: 12px;
+}
+.conteiner-perfil h6{
+    margin-bottom: 2px;
+}
+.conteiner-perfil button {
+    background: #54668e;
+    color: white;
+    border-radius: 14px;
+    border: 0px;
+    padding: 0px 15px;
+    margin-left: 15px;
+}

@@ -18,7 +18,6 @@ export class DetalheChamadoComponent implements OnInit{
       this.id = params['id']
       this.dataService.pegarId(this.id)
     })
-    
     this.dataService.chamadoSelecionado().subscribe({
       next: (res) => this.dado = res
     })

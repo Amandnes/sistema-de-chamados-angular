@@ -4,10 +4,11 @@ import { CriarChamadosComponent } from './chamados/criar-chamados/criar-chamados
 import { ListaChamadosComponent } from './chamados/lista-chamados/lista-chamados.component';
 import { DashboardsChamadosComponent } from './chamados/dashboards-chamados/dashboards-chamados.component';
 import { DetalheChamadoComponent } from './chamados/lista-chamados/detalhe-chamado/detalhe-chamado.component';
-// import { ChamadosComponent } from './chamados/chamados.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: 'novo-chamado', component: CriarChamadosComponent },
+  // { path: 'login', component: LoginComponent},
+  { path: 'novo-chamado', component: CriarChamadosComponent},
   { path: 'lista-chamados', component: ListaChamadosComponent},
   { path: 'dashboards', component: DashboardsChamadosComponent },
   { path: ':id', component: DetalheChamadoComponent}

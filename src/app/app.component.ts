@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'sistema-de-chamados';
+  logado: any
+
+  constructor() {}
+
+  login(log: boolean) {
+    this.logado = log
+  }
+  logOut(log: boolean) {
+    this.logado = log
+  }
 }

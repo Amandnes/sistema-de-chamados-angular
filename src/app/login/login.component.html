@@ -1,0 +1,18 @@
+<div class="conteiner-login">
+    <div class="body-login">
+        <div class="alert alert-danger" role="alert" *ngIf="isErro">
+            Email ou senha incorreto.
+        </div>
+        <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+            <div>
+                <legend>Login:</legend>
+                <input class="form-control" type="email" placeholder="E-mail" formControlName="email" autocomplete="email">
+            </div>
+            <div>
+                <legend>Senha:</legend>
+                <input class="form-control" type="password" placeholder="Senha" formControlName="password" autocomplete="current-password">
+            </div>
+            <button type="submit" class="btn" (click)="onSubmit()">Entrar</button>
+        </form>
+    </div>  
+</div>

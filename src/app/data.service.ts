@@ -41,52 +41,24 @@ export class DataService {
         return forkJoin([
             this.http.post<any>(this.jsonUrl + 'upload', formData).pipe(
             tap(response => {
-                console.log('arquivo enviado', response, file)
+                // console.log('arquivo enviado', response, file)
             }),
             catchError(error => {
-                console.error('Erro ao enviar', error)
+                // console.error('Erro ao enviar', error)
                 return throwError(() => new Error("Erro ao enviar os dados"))
             }),
             map((jsonData: any) => {
-                console.log(jsonData)
+                // console.log(jsonData)
             })),
             this.http.post<any>(this.jsonUrl, dados, {headers}).pipe(
                 tap(response => {
-                    console.log("Dados enviados", response)
+                    // console.log("Dados enviados", response)
                 }),
                 catchError(error => {
-                    console.error('Erro ao enviar', error)
                     return throwError(() => new Error("Erro ao enviar os dados"))
                 })
             )
             ])
 
-        return this.http.post<any>(this.jsonUrl, dados, {headers}).pipe(
-            tap(response => {
-                console.log("Dados enviados", response)
-            }),
-            catchError(error => {
-                console.error('Erro ao enviar', error)
-                return throwError(() => new Error("Erro ao enviar os dados"))
-            })
-        )
     }
-
-    // enviarArquivo(file: File): Observable<any> {
-    //     const formData = new FormData()
-    //     formData.append('file', file)
-
-    //     return this.http.post<any>(this.jsonUrl + 'upload', formData).pipe(
-    //         tap(response => {
-    //             console.log('arquivo enviado', response, file)
-    //         }),
-    //         catchError(error => {
-    //             console.error('Erro ao enviar', error)
-    //             return throwError(() => new Error("Erro ao enviar os dados"))
-    //         }),
-    //         map((jsonData: any) => {
-    //             console.log(jsonData)
-    //         })
-    //     )
-    // }
 }
