@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './dashboards-chamados.component.css'
 })
 export class DashboardsChamadosComponent {
-  constructor() {
-    console.log('Dashboard aberto')
-  }
+  constructor() {}
 }

@@ -10,7 +10,8 @@ import { DataService } from '../../data.service';
 export class CriarChamadosComponent implements OnInit{
   isEnviado = false
   isErro = false
-  formChamado: FormGroup
+  formChamado: FormGroup 
+  file: File = new File([], '', undefined)
 
   constructor(private dataService: DataService) {
     this.formChamado = new FormGroup({
@@ -18,7 +19,7 @@ export class CriarChamadosComponent implements OnInit{
       criado_por: new FormControl(''),
       descricao: new FormControl(''),
       local: new FormControl(''),
-      anexo: new FormControl(''),
+      anexo: new FormControl(this.file.name),
       prioridade: new FormControl('')
     })
   }
@@ -26,9 +27,14 @@ export class CriarChamadosComponent implements OnInit{
   ngOnInit() {}
 
   onSubmit() {
-    this.dataService.updateData(this.formChamado.value).subscribe({
+    this.dataService.updateData(this.formChamado.value, this.file).subscribe({
       next: (res) => {this.isEnviado = true},
-      error: (err) => {this.isEnviado = true}
+      error: (err) => {this.isErro = true}
     })
+  }
+
+  onFileSelected(event: any) {
+    const file:File = event.target.files[0];
+    this.file = file
   }
 }

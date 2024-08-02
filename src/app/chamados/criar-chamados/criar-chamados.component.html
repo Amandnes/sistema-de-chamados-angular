@@ -34,7 +34,7 @@
             <textarea class="form-control" name="descricao" formControlName="descricao"></textarea>
         </div>
         <div>
-            <input class="form-control" type="file" name="anexo" id="form-anexo" formControlName="anexo">
+            <input class="form-control" type="file" name="anexo" id="form-anexo" formControlName="anexo" (change)="onFileSelected($event)">
         </div>
         <button class="btn btn-enviar" type="button" (click)="onSubmit()">Enviar</button>
     </form>

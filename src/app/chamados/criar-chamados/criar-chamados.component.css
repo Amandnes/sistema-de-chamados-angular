@@ -5,26 +5,6 @@
     display: flex;  
     gap: 7.8%;
 }
-/* .parte-form {
-    margin-bottom: 10px;
-}
-input, select, textarea {
-    padding: 5px 10px;
-    font-size: 14px;
-    margin-top: 4px;
-    border: 1px solid #27272769;
-    border-radius: 3px;
-}
- #form-local, #form-usuario {
-    width: 300px;
-}
-#form-assunto, #form-descricao {
-    width: 410px;
-}
-#form-descricao {
-    height: 150px;
-    resize: vertical;
-}  */
 .btn-enviar {
     background: #3a4675;
     color: white;
