@@ -1,12 +1,15 @@
 <div class="conteiner-conteudo-geral" *ngIf="isLoad">
-    <div class="bloco-1">
-        <div class="bloco-interno-1">
+    <div class="bloco-2">
+        <div>
             <span>Assunto do Chamado: </span>
             <span class="rChamado">{{dado.assunto}}</span>
         </div>
-        <div class="bloco-interno-1">
-            <span>Prioridade: </span>
-            <span class="prioridade" [ngClass]="stylePrioridade(dado.prioridade)" style="padding: 2px 13px;">{{dado.prioridade}}</span>
+        <div style="display: flex; gap: 16px;">
+            <button class="env" *ngIf="isImg">
+                <a [href]="linkImg">Baixar Arquivo</a>
+                <img src="../../../../assets/icons8-anexo-24.png" alt="Baixar Arquivo">
+            </button>
+            <button class="botao-enviar" (click)="editarChamado()">Editar Chamado</button>
         </div>
     </div>
     <div class="bloco-1">
@@ -19,9 +22,15 @@
             <span class="rChamado">{{dado.local}}</span>
         </div>
     </div>
-    <div>
-        <span>De: </span>
-        <span class="rChamado">{{dado.criado_por}}</span>
+    <div class="bloco-1">
+        <div class="bloco-interno-1">
+            <span>De: </span>
+            <span class="rChamado">{{dado.criado_por}}</span>
+        </div>
+        <div class="bloco-interno-1">
+            <span>Prioridade: </span>
+            <span class="prioridade" [ngClass]="stylePrioridade(dado.prioridade)" style="padding: 2px 13px;">{{dado.prioridade}}</span>
+        </div>
     </div>
     <div class="bloco-descricao">
         <h6>Descrição: </h6>

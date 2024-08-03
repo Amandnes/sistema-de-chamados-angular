@@ -12,5 +12,6 @@ export class HeaderComponent {
 
   buttonLogOut() {
     this.logOut.emit(false)
+    location.reload()
   }
 }

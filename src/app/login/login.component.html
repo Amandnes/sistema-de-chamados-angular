@@ -1,5 +1,5 @@
 <div class="conteiner-login">
-    <div class="body-login">
+    <div class="body-login" *ngIf="!isLoading">
         <div class="alert alert-danger" role="alert" *ngIf="isErro">
             Email ou senha incorreto.
         </div>
@@ -15,4 +15,5 @@
             <button type="submit" class="btn" (click)="onSubmit()">Entrar</button>
         </form>
     </div>  
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
 </div>

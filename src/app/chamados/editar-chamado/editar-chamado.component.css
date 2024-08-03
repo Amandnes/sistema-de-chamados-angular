@@ -1,0 +1,20 @@
+.conteiner-conteudo-geral h3 {
+    margin: 0px 0px 20px 0px;
+}
+.parte2-form {
+    display: flex;  
+    gap: 7.8%;
+}
+.btn-enviar {
+    background: #3a4675;
+    color: white;
+    width: 100px;
+    margin-left: 8px;
+}
+.btn-enviar:hover {
+    background-color: #54668e;
+}
+.email-usuario {
+    font-size: 15px;
+    font-weight: 600;
+}

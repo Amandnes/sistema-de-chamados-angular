@@ -10,21 +10,32 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class DetalheChamadoComponent implements OnInit{
   id: any
   dado: any
+  dadosFireBase: any
+  linkImg = 'https://backchamadoentrevista.esferasolutions.com.br/chamados/download/'
+  isImg: any
+  
   isLoad = false
   constructor(private dataService: DataService,  private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id']
-      this.dataService.pegarId(this.id)
+      this.dataService.visualizarChamado(this.id)
     })
     this.dataService.chamadoSelecionado().subscribe({
-      next: (res) => this.dado = res
+      next: (res) => this.dado = res,
+      complete: () => this.isLoad = true
     })
 
-    setTimeout(() => {
-      this.isLoad = true
-    }, 150)
+    this.dataService.getFile().subscribe({
+      next: (res) => {
+        this.isImg = res[1]
+        if(res[1] == true) {
+          this.linkImg += res[0]
+        }
+      },
+      error: (err) => console.error(err)
+    })
   }
 
   stylePrioridade(p: string) {
@@ -35,5 +46,9 @@ export class DetalheChamadoComponent implements OnInit{
     } else {
       return 'stylePrioridadeBaixa'
     }
+  }
+
+  editarChamado() {
+    this.router.navigate([`/editar-chamado/${this.id}`])
   }
 }

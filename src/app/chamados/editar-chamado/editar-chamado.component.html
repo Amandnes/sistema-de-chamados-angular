@@ -1,0 +1,41 @@
+<div class="conteiner-conteudo-geral" *ngIf="isLoading">
+    <div class="alert alert-success" role="alert" *ngIf="isEnviado">
+        Chamado enviado com sucesso!
+        </div>
+    <div class="alert alert-danger" role="alert" *ngIf="isErro">
+        Falha ao enviar o chamado.
+    </div>
+    <h3>Chamado Nº {{dadoChamado.id}}</h3>
+    <div style="margin-bottom: 30px;">
+        <span>Usuário: </span>
+        <span class="email-usuario">{{dadoChamado.criado_por}}</span>
+    </div>
+    <form class="row g-3" [formGroup]="formChamado" (ngSubmit)="onSubmit()">
+        <div class="parte2-form">
+            <div class="col-4">
+                <label class="form-label">Local: </label>
+                <input class="form-control" type="text" id="form-local" formControlName="local">
+            </div>
+            <div class="col-1">
+                <label class="form-label">Prioridade:</label>
+                <select class="form-select" name="select" id="prioridade" formControlName="prioridade">
+                    <option value="Alta">Alta</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Baixa">Baixa</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-12">
+            <label class="form-label">Assunto:</label>
+            <input class="form-control" type="text" id="form-assunto" formControlName="assunto">
+        </div>
+        <div class="col-12">
+            <label class="form-label">Descrição:</label>
+            <textarea class="form-control" name="descricao" formControlName="descricao"></textarea>
+        </div>
+        <div>
+            <input class="form-control" type="file" name="file" id="file" formControlName="anexo" (change)="onFileSelected($event)">
+        </div>
+        <button class="btn btn-enviar" type="button" (click)="onSubmit()">Enviar</button>
+    </form>
+</div>

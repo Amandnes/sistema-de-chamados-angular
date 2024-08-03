@@ -1,0 +1,7 @@
+
+tbody tr td{
+    cursor: pointer;
+}
+tr:hover td{
+        background-color: #b5b5b530;
+}

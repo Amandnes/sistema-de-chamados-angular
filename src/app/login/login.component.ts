@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AuthResponseData, AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,9 @@ export class LoginComponent {
   formLogin: FormGroup
   isLogin: boolean = false
   isErro: boolean = false
+  isLoading: boolean = false
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private dataService: DataService) {
     this.formLogin = new FormGroup({
       email: new FormControl(),
       password: new FormControl()
@@ -23,6 +25,7 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
+    this.isLoading = !this.isLoading
     let authObs: Observable<AuthResponseData>
     authObs = this.authService.login(this.formLogin.value.email, this.formLogin.value.password)
     
@@ -31,9 +34,12 @@ export class LoginComponent {
         this.router.navigate(['/'])
         this.isLogin = true
         this.login.emit(true)
+        this.dataService.getIdUsuario(resData.localId)
+        this.isLoading = !this.isLoading
       },
       errorMessage => {
         this.isErro = true
+        this.isLoading = !this.isLoading
       }
     )
   }
