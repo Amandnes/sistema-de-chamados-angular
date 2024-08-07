@@ -1,0 +1,22 @@
+<div class="conteiner-conteudo-geral" *ngIf="!isLoading">
+    <h3>Lista de chamados</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Usuário</th>
+                <th scope="col">Assunto</th>
+                <th scope="col">Prioridade</th>
+                <th scope="col">Local</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dado of dados;" (click)="clickChamado(dado.id)">
+                <td>{{dado.criado_por}}</td>
+                <td>{{dado.assunto}}</td>
+                <td><div class="prioridade" [ngClass]="stylePrioridade(dado.prioridade)">{{dado.prioridade}}</div></td>
+                <td>{{dado.local}}</td>
+            </tr>
+        </tbody>
+        </table>
+</div>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

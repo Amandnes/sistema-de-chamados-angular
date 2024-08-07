@@ -1,0 +1,23 @@
+.conteiner-login {
+    width: 500px;
+    border-radius: 10px;
+    margin: 0px auto;
+    display: grid;
+    align-items: center;
+    min-height: 90vh;
+}
+.body-login {
+    box-shadow: 0 0 37px rgba(8, 21, 66, 0.05);
+    padding: 30px;
+}
+button{
+    background: #3a4675;
+    color: white;
+    border-radius: 3px;
+    border: 0px;
+    padding: 5px 15px;
+    margin-top: 35px;
+}
+button:hover {
+    background-color: #54668e;
+}

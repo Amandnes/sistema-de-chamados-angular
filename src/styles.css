@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0px;
+    font-family: system-ui;
+    background-color: #f5f5f5;
+}
+body, html {
+    height: 100%;
+}
+#container-header, #conteudos-gerais {
+    margin-left: 265px;
+}
+#body-header, .titulo-sidebar, .conteudo-sidebar li, .campo-busca {
+    display: flex;
+}
+#body-header, .titulo-sidebar, .campo-busca {
+    align-items: center;
+}
+#body-header {
+    margin: 0px 20px;
+} 
+.conteiner-conteudo-geral {
+    background: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+.stylePrioridadeAlta {
+    background-color: #f90202;
+}
+.stylePrioridadeNormal {
+    background-color: #6fab6f;
+}
+.stylePrioridadeBaixa {
+    background-color: #59a6f7;
+}
+.prioridade {
+    width: 70px;
+    text-align: center;
+    border-radius: 4px;
+    color: white;
+}
