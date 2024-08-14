@@ -6,17 +6,10 @@ import { Observable, catchError, forkJoin, map, tap, throwError } from "rxjs";
 export class DataService {
     idChamadoSelecionado: any
     idUsuario: any
-    idArquivoChamado = ''
-    filename = ''
+    dado: any
     emailUsuario = ''
-    dadosObjEditar = {
-        idChamado: '',
-        arquivoChamado: '',
-        idUsuario: ''
-    }
     todosDados: any
     outrosDados: any
-    codigoChamadoFireBase: any
 
     private jsonUrl = 'https://sistema-de-chamado-secundario-default-rtdb.firebaseio.com/data'
     
@@ -64,7 +57,6 @@ export class DataService {
         return id
     }
 
-    dado: any
     chamadoSelecionado(): Promise<any> {
         return new Promise((resolve) => {
             this.getData().subscribe({
@@ -110,22 +102,13 @@ export class DataService {
         }
     }
 
-    setIdArquivo(id = this.idArquivoChamado) {
-        return id
-    }
+    // setIdArquivo(id = this.idArquivoChamado) {
+    //     return id
+    // }
     
     getIdUsuario(id: any): Observable<any> {
         this.idUsuario = id
         return id
-    }
-
-    upadateDataFireBase(dados: any) {
-        this.dadosObjEditar = dados
-        return this.http.post(`https://sistema-de-chamados-269bd-default-rtdb.firebaseio.com/${this.idUsuario}/UsuarioChamado.json/`, JSON.stringify(dados)).subscribe()
-        // if(!isEdit) {
-        // } else {
-        //     return this.http.put(`https://sistema-de-chamados-269bd-default-rtdb.firebaseio.com/${this.idUsuario}/UsuarioChamado/${this.codigoChamadoFireBase}.json`, JSON.stringify(this.dadosObjEditar)).subscribe()
-        // }
     }
 
     setUsuario(id = this.emailUsuario) {
