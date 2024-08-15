@@ -10,6 +10,7 @@ export class DataService {
     emailUsuario = ''
     todosDados: any
     outrosDados: any
+    codChamado: string = ''
 
     private jsonUrl = 'https://sistema-de-chamado-secundario-default-rtdb.firebaseio.com/data'
     
@@ -28,6 +29,7 @@ export class DataService {
                     this.outrosDados = Object.entries(this.todosDados[i][1].UsuarioChamado)
                     for(let j = 0; j < this.outrosDados.length; j++) {
                         arrayTodosChamados.push(this.outrosDados[j][1])
+                        console.log(this.outrosDados[j])
                     }
                 }
                 return arrayTodosChamados
@@ -38,6 +40,7 @@ export class DataService {
     //Retorna somente os Chamados do Usuário logado
     getDataMeusChamados() {
         let arrayMeusChamados: any[] = []
+        let codigoChamados: any = []
         return this.http.get<any>(`${this.jsonUrl}/${this.idUsuario}/UsuarioChamado.json`).pipe(
             catchError(error => {
                 return throwError(() => new Error("Erro ao enviar os dados"))
@@ -45,9 +48,10 @@ export class DataService {
             map(dados => {
                 this.outrosDados = Object.entries(dados)
                 for(let i = 0; i < this.outrosDados.length; i++) {
+                    codigoChamados.push(this.outrosDados[i][0])
                     arrayMeusChamados.push(this.outrosDados[i][1]) 
                 }
-                return arrayMeusChamados
+                return [arrayMeusChamados, codigoChamados]
             })
         )
     }
@@ -55,6 +59,10 @@ export class DataService {
     visualizarChamado(id: any): Observable<any> {
         this.idChamadoSelecionado = id
         return id
+    }
+
+    codigoChamado(codChamado: string) {
+        this.codChamado = codChamado
     }
 
     chamadoSelecionado(): Promise<any> {
@@ -91,7 +99,7 @@ export class DataService {
                 )
             
         } else {
-            return this.http.put<any>(this.jsonUrl + this.idChamadoSelecionado, dados).pipe(
+            return this.http.put<any>(`${this.jsonUrl}/${this.idUsuario}/UsuarioChamado/${this.codChamado}.json`, dados).pipe(
                     tap(response => {
                         // console.log("Dados enviados", response)
                     }),

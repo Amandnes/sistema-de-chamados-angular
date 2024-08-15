@@ -11,12 +11,13 @@ export class MeusChamadosComponent implements OnInit{
   isLoading: boolean = true
   dados: any
   outrosDados: any
+  codigoChamado: any
 
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.dataService.getDataMeusChamados().subscribe({
-      next: (res) => this.dados = res,
+      next: (res) => {this.dados = res[0], this.codigoChamado = res[1]},
       error: (err) => console.error(err),
       complete: () => {
         this.isLoading = !this.isLoading
@@ -34,8 +35,9 @@ export class MeusChamadosComponent implements OnInit{
     }
   }
 
-  clickChamado(dado: number) {
-    this.dataService.visualizarChamado(dado)
-    this.router.navigate([`/meus-chamados/chamado/${dado}`])
+  clickChamado(id: number, index: number) {
+    this.dataService.visualizarChamado(id)
+    this.dataService.codigoChamado(this.codigoChamado[index])
+    this.router.navigate([`/meus-chamados/chamado/${id}`])
   }
 }

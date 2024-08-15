@@ -19,23 +19,28 @@ export class EditarChamadoComponent {
   file: File = new File([], '', undefined)
   isFile = false
   nomeImg: any
+  usuario: any
 
   constructor(private dataService: DataService, private route: ActivatedRoute) {
+    this.usuario = this.dataService.setUsuario()
+
     this.route.params.subscribe((params: Params) => {
       this.id = params['id']
-      this.dataService.visualizarChamado(this.id)
-    })
-    this.dataService.chamadoSelecionado().then(data => {
-      this.dadoChamado = data
-      this.formChamado = new FormGroup({
-        assunto: new FormControl(this.dadoChamado.assunto),
-        descricao: new FormControl(this.dadoChamado.descricao),
-        local: new FormControl(this.dadoChamado.local),
-        anexo: new FormControl(''),
-        prioridade: new FormControl(this.dadoChamado.prioridade)
+      this.dataService.chamadoSelecionado().then(data => {
+        this.dadoChamado = data
+        this.formChamado = new FormGroup({
+          assunto: new FormControl(this.dadoChamado.assunto),
+          criado_por: new FormControl(this.usuario),
+          descricao: new FormControl(this.dadoChamado.descricao),
+          local: new FormControl(this.dadoChamado.local),
+          id: new FormControl(parseInt(this.id)),
+          anexo: new FormControl(),
+          prioridade: new FormControl(this.dadoChamado.prioridade)
+        })
+        this.isLoading = true
       })
-      this.isLoading = true
     })
+
     
   }
 
