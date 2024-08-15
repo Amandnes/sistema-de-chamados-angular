@@ -10,14 +10,12 @@ import { Router } from '@angular/router';
 export class MeusChamadosComponent implements OnInit{
   isLoading: boolean = true
   dados: any
-  outrosDados: any
-  codigoChamado: any
 
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.dataService.getDataMeusChamados().subscribe({
-      next: (res) => {this.dados = res[0], this.codigoChamado = res[1]},
+      next: (res) => this.dados = res,
       error: (err) => console.error(err),
       complete: () => {
         this.isLoading = !this.isLoading
@@ -35,9 +33,9 @@ export class MeusChamadosComponent implements OnInit{
     }
   }
 
-  clickChamado(id: number, index: number) {
-    this.dataService.visualizarChamado(id)
-    this.dataService.codigoChamado(this.codigoChamado[index])
+  clickChamado(id: number, dado: any) {
+    this.dataService.visualizarChamado(dado)
+    console.log(dado)
     this.router.navigate([`/meus-chamados/chamado/${id}`])
   }
 }

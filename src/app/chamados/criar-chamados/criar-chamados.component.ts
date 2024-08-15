@@ -24,8 +24,7 @@ export class CriarChamadosComponent implements OnInit{
   ngOnInit() {
     this.usuario = this.dataService.setUsuario()
     this.dataService.getData().subscribe(dados => {
-      this.isLoad = true
-      this.id = dados.length
+      this.id = dados[0][1].id
       this.formChamado = new FormGroup({
         assunto: new FormControl(),
         criado_por: new FormControl(this.usuario),
@@ -35,6 +34,7 @@ export class CriarChamadosComponent implements OnInit{
         prioridade: new FormControl(),
         id: new FormControl(this.id + 1)
       })
+      this.isLoad = true
     })
   }
 

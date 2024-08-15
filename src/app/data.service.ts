@@ -4,9 +4,8 @@ import { Observable, catchError, forkJoin, map, tap, throwError } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class DataService {
-    idChamadoSelecionado: any
+    dadosChamadoSelecionado: any
     idUsuario: any
-    dado: any
     emailUsuario = ''
     todosDados: any
     outrosDados: any
@@ -28,10 +27,16 @@ export class DataService {
                 for(let i = 0; i < this.todosDados.length; i++) {
                     this.outrosDados = Object.entries(this.todosDados[i][1].UsuarioChamado)
                     for(let j = 0; j < this.outrosDados.length; j++) {
-                        arrayTodosChamados.push(this.outrosDados[j][1])
-                        console.log(this.outrosDados[j])
+                        arrayTodosChamados.push(this.outrosDados[j])
                     }
                 }
+                arrayTodosChamados.sort((a:any, b:any) => {
+                    if(a[1].id < b[1].id) 
+                      return 1
+                    if(a[1].id > b[1].id)
+                      return -1
+                    return 0
+                })
                 return arrayTodosChamados
             })
         )
@@ -40,7 +45,6 @@ export class DataService {
     //Retorna somente os Chamados do Usuário logado
     getDataMeusChamados() {
         let arrayMeusChamados: any[] = []
-        let codigoChamados: any = []
         return this.http.get<any>(`${this.jsonUrl}/${this.idUsuario}/UsuarioChamado.json`).pipe(
             catchError(error => {
                 return throwError(() => new Error("Erro ao enviar os dados"))
@@ -48,40 +52,28 @@ export class DataService {
             map(dados => {
                 this.outrosDados = Object.entries(dados)
                 for(let i = 0; i < this.outrosDados.length; i++) {
-                    codigoChamados.push(this.outrosDados[i][0])
-                    arrayMeusChamados.push(this.outrosDados[i][1]) 
+                    arrayMeusChamados.push(this.outrosDados[i]) 
                 }
-                return [arrayMeusChamados, codigoChamados]
+                arrayMeusChamados.sort((a:any, b:any) => {
+                    if(a[1].id < b[1].id) 
+                      return 1
+                    if(a[1].id > b[1].id)
+                      return -1
+                    return 0
+                  })
+                return arrayMeusChamados
             })
         )
     }
 
-    visualizarChamado(id: any): Observable<any> {
-        this.idChamadoSelecionado = id
-        return id
+    visualizarChamado(dado: any): Observable<any> {
+        this.dadosChamadoSelecionado = dado[1]
+        this.codChamado = dado[0]
+        return dado
     }
 
-    codigoChamado(codChamado: string) {
-        this.codChamado = codChamado
-    }
-
-    chamadoSelecionado(): Promise<any> {
-        return new Promise((resolve) => {
-            this.getData().subscribe({
-                next: (res) => {
-                    this.dado = res
-                }, complete: () => {
-                    for(let i = 0; i < this.dado.length; i++) {
-                        if(this.idChamadoSelecionado == this.dado[i].id) {
-                          this.dado = this.dado[i]
-                          break
-                        }
-                    }
-                    resolve(this.dado)
-                }
-            })
-        }) 
-      
+    chamadoSelecionado() {
+        return this.dadosChamadoSelecionado
     }
 
     updateData(dados: any, file: File, isUpadateData: boolean, isFile: boolean): Observable<any> {
@@ -109,10 +101,6 @@ export class DataService {
             )
         }
     }
-
-    // setIdArquivo(id = this.idArquivoChamado) {
-    //     return id
-    // }
     
     getIdUsuario(id: any): Observable<any> {
         this.idUsuario = id

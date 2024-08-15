@@ -20,16 +20,12 @@ export class DetalheChamadoComponent implements OnInit{
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id']
-      this.dataService.visualizarChamado(this.id)
     })
     if(this.router.url.slice(0,23) === '/meus-chamados/chamado/') {
       this.isMeusChamados = true
     }
-    this.dataService.chamadoSelecionado().then(data => {
-      this.dado = data
-      this.isLoad = !this.isLoad
-    })
-    
+    this.dado = this.dataService.chamadoSelecionado()
+    this.isLoad = !this.isLoad
   }
 
   stylePrioridade(p: string) {

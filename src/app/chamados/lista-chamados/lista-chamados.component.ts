@@ -34,8 +34,8 @@ export class ListaChamadosComponent implements OnInit{
     }
   }
 
-  clickChamado(id: number) {
-    this.dataService.visualizarChamado(id)
+  clickChamado(id: number, dado: any) {
+    this.dataService.visualizarChamado(dado)
     this.router.navigate([`/lista-chamados/chamado/${id}`])
   }
 }

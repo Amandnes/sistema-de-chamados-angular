@@ -10,11 +10,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let dado of dados;" (click)="clickChamado(dado.id)">
-                <td>{{dado.criado_por}}</td>
-                <td>{{dado.assunto}}</td>
-                <td><div class="prioridade" [ngClass]="stylePrioridade(dado.prioridade)">{{dado.prioridade}}</div></td>
-                <td>{{dado.local}}</td>
+            <tr *ngFor="let dado of dados;" (click)="clickChamado(dado[1].id, dado)">
+                <td>{{dado[1].criado_por}}</td>
+                <td>{{dado[1].assunto}}</td>
+                <td><div class="prioridade" [ngClass]="stylePrioridade(dado[1].prioridade)">{{dado[1].prioridade}}</div></td>
+                <td>{{dado[1].local}}</td>
             </tr>
         </tbody>
         </table>
