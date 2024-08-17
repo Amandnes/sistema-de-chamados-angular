@@ -25,6 +25,9 @@ export class LoginComponent implements OnInit{
     
   }
   ngOnInit(): void {
+    if(!this.isLogin) {
+      this.router.navigate(['/'])
+    }
   }
 
   onSubmit(): void {

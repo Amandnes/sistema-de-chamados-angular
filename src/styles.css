@@ -40,3 +40,9 @@ body, html {
     border-radius: 4px;
     color: white;
 }
+
+@media (max-width: 770px) {
+    #container-header, #conteudos-gerais {
+        width: 100vh;
+    }
+}

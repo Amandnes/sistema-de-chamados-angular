@@ -53,14 +53,11 @@ export class AuthService {
           return throwError(errorMessage)
         }
         switch (errorRes.error.error.message) {
-            case 'EMAIL_EXISTS':
-                errorMessage = 'This email exists already'
-                break
             case 'EMAIL_NOT_FOUND':
-                errorMessage = 'This email does not exist.'
+                errorMessage = 'Email não existe.'
                 break
             case 'INVALID_PASSWORD':
-                errorMessage = 'This password is not correct.'
+                errorMessage = 'Senha inválida.'
                 break
             case 'INVALID_EMAIL':
                 errorMessage = 'Email inválido'

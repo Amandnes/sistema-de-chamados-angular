@@ -11,6 +11,8 @@ export class ListaChamadosComponent implements OnInit{
   dados: any
   dadosFireBase: any
   isLoading: boolean = true
+  dadosFiltrados: any
+  isLoadingDados: boolean = false
 
   constructor(private dataService: DataService, private router: Router) {}
 
@@ -20,7 +22,7 @@ export class ListaChamadosComponent implements OnInit{
       error: (err) => console.error(err),
       complete: () => {
         this.isLoading = !this.isLoading
-        }
+      }
     })
   }
 
@@ -37,5 +39,12 @@ export class ListaChamadosComponent implements OnInit{
   clickChamado(id: number, dado: any) {
     this.dataService.visualizarChamado(dado)
     this.router.navigate([`/lista-chamados/chamado/${id}`])
+  }
+
+  receberDados(dados: any) {
+    this.dadosFiltrados = dados
+    setTimeout(() => {
+      this.isLoadingDados = true
+    })
   }
 }

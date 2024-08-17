@@ -1,22 +1,25 @@
-<div class="conteiner-conteudo-geral" *ngIf="!isLoading">
-    <h3>Lista de chamados</h3>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Usuário</th>
-                <th scope="col">Assunto</th>
-                <th scope="col">Prioridade</th>
-                <th scope="col">Local</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let dado of dados;" (click)="clickChamado(dado[1].id, dado)">
-                <td>{{dado[1].criado_por}}</td>
-                <td>{{dado[1].assunto}}</td>
-                <td><div class="prioridade" [ngClass]="stylePrioridade(dado[1].prioridade)">{{dado[1].prioridade}}</div></td>
-                <td>{{dado[1].local}}</td>
-            </tr>
-        </tbody>
-        </table>
+<div >
+    <div class="conteiner-conteudo-geral" *ngIf="isLoadingDados">
+        <h3>Lista de chamados</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 30%;">Usuário</th>
+                    <th scope="col" style="width: 30%;">Assunto</th>
+                    <th scope="col" style="width: 15%;">Prioridade</th>
+                    <th scope="col" style="width: 25%;">Local</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dado of dadosFiltrados;" (click)="clickChamado(dado[1].id, dado)">
+                    <td>{{dado[1].criado_por}}</td>
+                    <td>{{dado[1].assunto}}</td>
+                    <td><div class="prioridade" [ngClass]="stylePrioridade(dado[1].prioridade)">{{dado[1].prioridade}}</div></td>
+                    <td>{{dado[1].local}}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <app-paginacao [dados]="dados" (emitirDados)="receberDados($event)" *ngIf="!isLoading"></app-paginacao>
 </div>
 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

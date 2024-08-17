@@ -16,6 +16,7 @@ import { MeusChamadosComponent } from './chamados/meus-chamados/meus-chamados.co
 import { EditarChamadoComponent } from './chamados/editar-chamado/editar-chamado.component';
 import { CommonModule } from '@angular/common';
 import { CriarChamadosComponent } from './chamados/criar-chamados/criar-chamados.component';
+import { PaginacaoComponent } from './shared/paginacao/paginacao.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CriarChamadosComponent } from './chamados/criar-chamados/criar-chamados
     LoadingSpinnerComponent,
     MeusChamadosComponent,
     EditarChamadoComponent,
-    CriarChamadosComponent
+    CriarChamadosComponent,
+    PaginacaoComponent
   ],
   imports: [
     BrowserModule,

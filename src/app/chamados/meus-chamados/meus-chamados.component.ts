@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class MeusChamadosComponent implements OnInit{
   isLoading: boolean = true
   dados: any
+  dadosFiltrados: any
+  isLoadingDados: boolean = false
 
   constructor(private dataService: DataService, private router: Router) {}
 
@@ -35,7 +37,13 @@ export class MeusChamadosComponent implements OnInit{
 
   clickChamado(id: number, dado: any) {
     this.dataService.visualizarChamado(dado)
-    console.log(dado)
     this.router.navigate([`/meus-chamados/chamado/${id}`])
+  }
+
+  receberDados(dados: any) {
+    this.dadosFiltrados = dados
+    setTimeout(() => {
+      this.isLoadingDados = true
+    })
   }
 }
